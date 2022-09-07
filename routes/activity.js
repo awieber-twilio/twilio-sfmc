@@ -62,7 +62,7 @@ exports.edit = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Edit');
+    res.status(200).send('Edit');
 };
 
 /*
@@ -79,7 +79,7 @@ exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
     logData(req);
-    res.send(200, 'Save');
+    res.status(200).send('Save');
 };
 
 /*
@@ -103,13 +103,13 @@ exports.execute = async (req, res) => {
       to
     });
     console.log(`SMS Result: ${JSON.stringify(result)}`);
-    res.send(200, result);
+    res.status(200).send(result);
    
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);
-    res.send(401, e);
+    res.status(401).send(e);
   }
-  res.send(200, 'Publish');
+  res.status(200).send('Publish');
 };
 
 exports.testSave = async (req, res) => {
@@ -117,7 +117,7 @@ exports.testSave = async (req, res) => {
     return await exports.execute(req, res);
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);
-    res.send(401, e);
+    res.status(401).send(e);
   }
 }
 
@@ -137,7 +137,7 @@ exports.publish = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
 //     logData(req);
-  res.send(200, 'Publish');
+res.status(200).send('Publish');
 };
 
 /*
@@ -155,5 +155,5 @@ exports.validate = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Validate');
+    res.status(200).send('Validate');
 };
