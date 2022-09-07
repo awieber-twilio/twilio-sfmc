@@ -21,7 +21,7 @@
                 }               
             ],
             "outArguments": [],
-            "url": "https://twlo-sfmc.herokuapp.com/execute",
+            "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -32,7 +32,7 @@
     "configurationArguments": {
       "applicationExtensionKey": "5e8b9eb7-ed0e-4f9e-9bcc-7bfd2a61dc6e",
        "save": {
-           "url": "https://twlo-sfmc.herokuapp.com/save",
+           "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/save",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -40,7 +40,7 @@
             "timeout": 2000
        },
        "publish": {
-           "url": "https://twlo-sfmc.herokuapp.com/publish",
+           "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/publish",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -48,7 +48,7 @@
             "timeout": 2000
        },
        "validate": {
-           "url": "https://twlo-sfmc.herokuapp.com/validate",
+           "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/validate",
             "verb": "POST",
             "body": "",
             "format": "json",
@@ -56,7 +56,7 @@
             "timeout": 2000
        },
        "stop": {
-           "url": "https://twlo-sfmc.herokuapp.com/stop",
+           "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/stop",
             "verb": "POST",
             "body": "",
             "format": "json",
