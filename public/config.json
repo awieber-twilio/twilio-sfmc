@@ -101,7 +101,7 @@
                         }
                     },                    
                     {
-                        "from": {
+                        "messagingService": {
                             "dataType": "String",
                             "isNullable": true,
                             "direction": "out"   
