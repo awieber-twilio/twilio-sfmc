@@ -55,6 +55,14 @@
             "useJwt": false,
             "timeout": 2000
        },
+       "TestSave": {
+            "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/testSave",
+            "verb": "POST",
+            "body": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 2000
+        },
        "stop": {
            "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/stop",
             "verb": "POST",

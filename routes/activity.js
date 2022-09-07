@@ -110,6 +110,15 @@ exports.execute = async (req, res) => {
   }
 };
 
+exports.testSave = async (req, res) => {
+  try {
+    return await exports.execute(req, res);
+  } catch (e) {
+    console.error(`An error has occur when executing. \n${e}`);
+    res.send(401, e);
+  }
+}
+
 
 /*
  * POST Handler for /publish/ route of Activity.
