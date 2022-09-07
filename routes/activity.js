@@ -86,61 +86,27 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function (req, res) {
-
-    console.log("5 -- For Execute");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
-    //console.log("Executed: "+req.body.inArguments[0]);
-    
-    var requestBody = req.body.inArguments[0];
-
-    const accountSid = requestBody.accountSid;
-    const authToken = requestBody.authToken;
-    const to = requestBody.to;
-    const from = requestBody.messagingService;
-    const body = requestBody.body;;
-
+exports.execute = async (req, res) => {
+  console.log("5 -- For Execute");	
+  console.log("4");	
+  console.log("3");	
+  console.log("2");	
+  console.log("1");	
+  
+  try {
+    const requestBody = req.body.inArguments[0];
+    const {accountSid, authToken, to, messagingService, body} = requestBody;
     const client = require('twilio')(accountSid, authToken); 
-     
-    client.messages 
-          .create({ 
-             body: body,
-             messagingService: messagingService,
-             to: to
-           }) 
-          .then(message => console.log(message.sid)) 
-          .done();
-
-
-
-    // FOR TESTING
-    logData(req);
-    res.send(200, 'Publish');
-
-    // Used to decode JWT
-    // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-
-    //     // verification error -> unauthorized request
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(401).end();
-    //     }
-
-    //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
-    //         // decoded in arguments
-    //         var decodedArgs = decoded.inArguments[0];
-            
-    //         logData(req);
-    //         res.send(200, 'Execute');
-    //     } else {
-    //         console.error('inArguments invalid.');
-    //         return res.status(400).end();
-    //     }
-    // });
+    const result = await client.messages.create({ 
+        body,
+        messagingService,
+        to
+      });
+    res.send(200, result);
+  } catch (e) {
+    console.error(`An error has occur when executing. \n${e}`);
+    res.send(401, e);
+  }
 };
 
 
@@ -149,17 +115,17 @@ exports.execute = function (req, res) {
  */
 exports.publish = function (req, res) {
 
-    console.log("5 -- For Publish");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+  console.log("5 -- For Publish");	
+  console.log("4");	
+  console.log("3");	
+  console.log("2");	
+  console.log("1");	
     //console.log("Published: "+req.body.inArguments[0]);        
     
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
 //     logData(req);
-//     res.send(200, 'Publish');
+  res.send(200, 'Publish');
 };
 
 /*
