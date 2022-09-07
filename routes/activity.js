@@ -69,7 +69,6 @@ exports.edit = function (req, res) {
  * POST Handler for /save/ route of Activity.
  */
 exports.save = function (req, res) {
-    
     console.log("5 -- For Save");	
     console.log("4");	
     console.log("3");	
@@ -96,12 +95,14 @@ exports.execute = async (req, res) => {
   try {
     const requestBody = req.body.inArguments[0];
     const {accountSid, authToken, to, messagingService, body} = requestBody;
+    console.log(`requestBody: ${JSON.stringify(requestBody)}`);
     const client = require('twilio')(accountSid, authToken); 
     const result = await client.messages.create({ 
-        body,
-        messagingService,
-        to
-      });
+      body,
+      messagingService,
+      to
+    });
+    console.log(`SMS Result: ${JSON.stringify(result)}`);
     res.send(200, result);
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);

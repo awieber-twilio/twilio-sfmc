@@ -89,25 +89,30 @@ define([
     }
 
     function save() {
-
-        var accountSid = $('#accountSID').val();
-        var authToken = $('#authToken').val();
-        var messagingService = $('#messagingService').val();
-        var body = $('#messageBody').val();
+      try {
+        console.log('Save Function');
+        const accountSid = $('#accountSID').val();
+        const authToken = $('#authToken').val();
+        const messagingService = $('#messagingService').val();
+        const body = $('#messageBody').val();
+        const to = $('#to').val();
 
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
             "authToken": authToken,
             "messagingService": messagingService,
             "body": body,
-            "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" //<----This should map to your data extension name and phone number column
+            "to": to
         }];
 
         payload['metaData'].isConfigured = true;
 
         console.log("Payload on SAVE function: "+JSON.stringify(payload));
         connection.trigger('updateActivity', payload);
-
+      } catch (e) {
+        console.error(`An error has occurred when saving.`);
+        throw e;
+      }
     }                    
 
 });
