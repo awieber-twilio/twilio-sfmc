@@ -109,7 +109,6 @@ exports.execute = async (req, res) => {
     console.error(`An error has occur when executing. \n${e}`);
     res.status(401).send(e);
   }
-  res.status(200).send('Publish');
 };
 
 exports.testSave = async (req, res) => {
