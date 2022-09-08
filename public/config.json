@@ -138,7 +138,8 @@
                         "sid": {
                             "dataType": "String",
                             "isNullable": false,
-                            "direction": "out"   
+                            "direction": "out",
+                            "access": "visible"
                         }
                     }
                 ]
