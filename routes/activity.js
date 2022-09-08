@@ -21,7 +21,7 @@ function logData(req) {
         cookies: req.cookies,
         ip: req.ip,
         path: req.path, 
-        host: req.host,
+        host: req.hostname,
         fresh: req.fresh,
         stale: req.stale,
         protocol: req.protocol,
@@ -39,7 +39,7 @@ function logData(req) {
     console.log("cookies: " + req.cookies);
     console.log("ip: " + req.ip);
     console.log("path: " + req.path);
-    console.log("host: " + req.host);
+    console.log("host: " + req.hostname);
     console.log("fresh: " + req.fresh);
     console.log("stale: " + req.stale);
     console.log("protocol: " + req.protocol);
@@ -62,7 +62,7 @@ exports.edit = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Edit');
+    res.status(200).send('Edit');
 };
 
 /*
@@ -79,7 +79,7 @@ exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
     logData(req);
-    res.send(200, 'Save');
+    res.status(200).send('Save');
 };
 
 /*
@@ -103,10 +103,11 @@ exports.execute = async (req, res) => {
       to
     });
     console.log(`SMS Result: ${JSON.stringify(result)}`);
-    res.send(200, result);
+    res.status(200).send(result);
+   
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);
-    res.send(401, e);
+    res.status(401).send(e);
   }
 };
 
@@ -115,7 +116,7 @@ exports.testSave = async (req, res) => {
     return await exports.execute(req, res);
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);
-    res.send(401, e);
+    res.status(401).send(e);
   }
 }
 
@@ -135,7 +136,7 @@ exports.publish = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
 //     logData(req);
-  res.send(200, 'Publish');
+res.status(200).send('Publish');
 };
 
 /*
@@ -153,5 +154,5 @@ exports.validate = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Validate');
+    res.status(200).send('Validate');
 };
