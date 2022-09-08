@@ -103,8 +103,9 @@ exports.execute = async (req, res) => {
       to
     });
     console.log(`SMS Result: ${JSON.stringify(result)}`);
-    res.status(200).send(result);
-   
+    const {sid} = result;
+
+    res.status(200).send({sid});
   } catch (e) {
     console.error(`An error has occur when executing. \n${e}`);
     res.status(401).send(e);

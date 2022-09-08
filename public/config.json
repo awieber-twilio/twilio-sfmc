@@ -20,7 +20,11 @@
                   "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" 
                 }               
             ],
-            "outArguments": [],
+            "outArguments": [
+                {
+                    "sid": ""
+                }
+            ],
             "url": "https://twlo-sfmc.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "",
