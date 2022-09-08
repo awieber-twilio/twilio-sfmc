@@ -99,7 +99,7 @@ exports.execute = async (req, res) => {
     const client = require('twilio')(accountSid, authToken); 
     const result = await client.messages.create({ 
       body,
-      messagingService,
+      messagingServiceSid: messagingService,
       to
     });
     console.log(`SMS Result: ${JSON.stringify(result)}`);
