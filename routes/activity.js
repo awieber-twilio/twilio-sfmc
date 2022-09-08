@@ -96,6 +96,11 @@ exports.execute = async (req, res) => {
     const requestBody = req.body.inArguments[0];
     const {accountSid, authToken, to, messagingService, body} = requestBody;
     console.log(`requestBody: ${JSON.stringify(requestBody)}`);
+    console.log({ 
+      body,
+      messagingServiceSid: messagingService,
+      to
+    });
     const client = require('twilio')(accountSid, authToken); 
     const result = await client.messages.create({ 
       body,
