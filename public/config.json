@@ -133,7 +133,15 @@
                         }
                     }
                 ],
-                "outArguments": []
+                "outArguments": [
+                    {
+                        "sid": {
+                            "dataType": "String",
+                            "isNullable": false,
+                            "direction": "out"   
+                        }
+                    }
+                ]
             }
         }
     }
